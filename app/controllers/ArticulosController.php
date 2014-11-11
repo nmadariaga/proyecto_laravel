@@ -35,8 +35,9 @@ class ArticulosController extends BaseController {
         $inputs = Input::All();
         $reglas = array
             (
-            'tipo_documento' => 'unique:registros',
-            'materia' => 'min:5'
+            'tipo_documento' => 'unique:registros|min:5',
+            'materia' => 'min:5',
+            'procedencia' => 'min:5'
         );
         $validar = Validator::make($inputs, $reglas);
         if ($validar->fails()) {
@@ -53,11 +54,10 @@ class ArticulosController extends BaseController {
             $n->rut = $inputs["rut"];
             $n->autor = $inputs["autor"];
             $n->save();
-
-            return Redirect::to('inicio')->with('mensaje', 'Su registro se ingresó correctamente');
+            Session::flash('mensaje', 'Su registro se ingresó correctamente');
+            return Redirect::to('inicio');
         }
     }
-
     public function get_editar($id = null) {
         $datos = Registros::find($id);
         return $this->layout->content = View::make('articulos/editar', compact("datos"));
@@ -67,8 +67,9 @@ class ArticulosController extends BaseController {
         $inputs = Input::All();
         $reglas = array
             (
-            'tipo_documento' => 'unique:registros',
-            'materia' => 'min:6',
+            'tipo_documento' => 'unique:registros|min:5',
+            'materia' => 'min:5',
+            'procedencia' => 'min:5'
         );
         $validar = Validator::make($inputs, $reglas);
         if ($validar->fails()) {
@@ -80,7 +81,7 @@ class ArticulosController extends BaseController {
             $n->materia = $inputs["materia"];
             $n->fecha = date("Y-m-d");
             $n->save();
-            Session::flash('mensaje', 'su registro se actualizo correctamente');
+            Session::flash('mensaje', 'Su registro se actualizo correctamente');
             return Redirect::to('inicio');
         }
     }

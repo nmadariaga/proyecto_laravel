@@ -4,28 +4,37 @@
 
 {{Form::open(array('method'=>'post_editar','url'=>'/articulos/editar/',"name"=>"form", 'files' => true))}}
 
-<h2>Actualizar Publicación</h2>
+<h2>Actualizar Registros</h2>
 
-<p>
-    Tipo de Registro: </br>     {{Form::text("tipo_documento",$datos['tipo_documento'],array('class' =>'form-control','required autofocus'))}} 
-</p>
-@if($errors->has('tipo_registro'))
+<div class="form-group">
+  <label class="control-label">Tipo de Documento</label>
+  {{Form::text("tipo_documento",$datos['tipo_documento'],array('class' =>'form-control','required autofocus'))}} 
+</div>
+@if($errors->has('tipo_documento'))
 <p class="alert alert-danger" role="alert">
-    @foreach($errors->get('tipo_registro') as $error )
+    @foreach($errors->get('tipo_documento') as $error )
     <strong>{{ $error }}</strong> </br>
     @endforeach
 
 
 </p>
 @endif
-<p>
-    Procedencia: </br>       {{Form::text("procedencia",$datos['procedencia'],array('class' =>'form-control','required autofocus'))}} 
-</p>
-<p>
-    Materia: </br>          {{Form::text("materia",$datos['materia'],array('class' =>'form-control','required autofocus'))}} 
-</p>
+<div class="form-group">
+  <label class="control-label">Procedencia</label>
+  {{Form::text("procedencia",$datos['procedencia'],array('class' =>'form-control','required autofocus'))}}
+</div>
+@if($errors->has('procedencia'))
+<p class="alert alert-danger" role="alert">
+    @foreach($errors->get('procedencia') as $error )
+    <strong>{{ $error }}</strong> </br>
+    @endforeach
 
-
+</p>
+@endif
+<div class="form-group">
+  <label class="control-label">Materia</label>
+  {{Form::text("materia",$datos['materia'],array('class' =>'form-control','required autofocus'))}}
+</div>
 @if($errors->has('materia'))
 <p class="alert alert-danger" role="alert">
     @foreach($errors->get('materia') as $error )

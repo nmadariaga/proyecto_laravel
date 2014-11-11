@@ -1,17 +1,22 @@
 @extends('layouts.master')
 @section('contenido')
+@if(Session::has('mensaje'))
+<div class="alert alert-success" role="alert">
+    <strong>{{Session::get('mensaje')}}</strong> 
 
+</div>
+@endif
 <div class="row marketing">
     <div class="panel panel-primary">
         <div class="panel-heading">Mi Perfil</div>
         <ul class="list-group">
             @foreach($perfil as $perfil)
             
-            <li class="list-group-item">Nombres:    {{$perfil->nombres}}</li> 
-            <li class="list-group-item">Apellidos:  {{$perfil->apellidos}}</li>
-            <li class="list-group-item">Rut:        {{$perfil->rut}}</li>
-            <li class="list-group-item">E-mail:  <a> {{$perfil->email}} </a></address></li>
-            <li class="list-group-item">Departamento:  {{$dpto->nombre}}   <a></a></address></li>  
+            <li class="list-group-item"><b>Nombres:</b>    {{$perfil->nombres}}</li> 
+            <li class="list-group-item"><b>Apellidos:</b>  {{$perfil->apellidos}}</li>
+            <li class="list-group-item"><b>Rut:</b>        {{$perfil->rut}}</li>
+            <li class="list-group-item"><b>E-mail:</b>  <a> {{$perfil->email}} </a></address></li>
+            <li class="list-group-item"><b>Departamento:</b>  {{$dpto->nombre}}   <a></a></address></li>  
             @endforeach
             </br> 
         </ul>

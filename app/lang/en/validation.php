@@ -68,7 +68,7 @@ return array(
 		"string"  => "The :attribute must be :size characters.",
 		"array"   => "The :attribute must contain :size items.",
 	),
-	"unique"               => "The :attribute has already been taken.",
+	"unique"               => "El :attribute ya existe en la base de datos.",
 	"url"                  => "The :attribute format is invalid.",
 
 	/*

@@ -11,17 +11,6 @@
   <label class="control-label">Tipo de Documento</label>
   {{Form::text("tipo_documento",Input::old('tipo_documento'),array('class' =>'form-control','required autofocus'))}} 
 </div>
-
-<div class="form-group">
-  <label class="control-label">Procedencia</label>
-  {{Form::text("procedencia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
-</div>
-
-<div class="form-group">
-  <label class="control-label">Materia</label>
-  {{Form::text("materia",Input::old('materia'),array('class' =>'form-control','required autofocus'))}}
-</div>
-
 @if($errors->has('tipo_documento'))
 <p class="alert alert-danger" role="alert">
     @foreach($errors->get('tipo_documento') as $error )
@@ -31,17 +20,35 @@
 
 </p>
 @endif
-
-@if($errors->has('observaciones'))
+<div class="form-group">
+  <label class="control-label">Procedencia</label>
+  {{Form::text("procedencia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
+</div>
+@if($errors->has('procedencia'))
 <p class="alert alert-danger" role="alert">
-    @foreach($errors->get('observaciones') as $error )
+    @foreach($errors->get('procedencia') as $error )
     <strong>{{ $error }}</strong> </br>
     @endforeach
 
 </p>
-
-
 @endif
+<div class="form-group">
+  <label class="control-label">Materia</label>
+  {{Form::text("materia",Input::old('materia'),array('class' =>'form-control','required autofocus'))}}
+</div>
+@if($errors->has('materia'))
+<p class="alert alert-danger" role="alert">
+    @foreach($errors->get('materia') as $error )
+    <strong>{{ $error }}</strong> </br>
+    @endforeach
+
+</p>
+@endif
+
+
+
+
+
 
 {{Form::hidden('autor',$autor['nombres'])}}
 {{Form::hidden('rut',$perfil['rut'])}}

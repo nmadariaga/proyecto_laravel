@@ -105,10 +105,9 @@ class TestController extends BaseController {
         $data->nombres = Input::get('nombres');
         $data->apellidos = Input::get('apellidos');
         $data->email = Input::get('email');
-        $data->direccion = Input::get('direccion');
         $data->save();
-        Session::flash('completo', 'sus datos se actualizaron correctamente');
-        return Redirect::to('test/editar');
+        Session::flash('mensaje', 'sus datos se actualizaron correctamente');
+        return Redirect::to('test/datos');
     }
 
     public function get_editaradmin($id = null) {
