@@ -5,7 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 Class Usuarios extends Eloquent implements UserInterface,RemindableInterface{
  
     protected $table = 'usuarios';
-    protected $fillable = array('rut','contrasena','remember_token','rol_fk');//nombre', 'correo', 'password');
+    //protected $fillable = array('rut','contrasena','remember_token','rol_fk');//nombre', 'correo', 'password');
     public $timestamps=false;
     protected $hidden = array('contrasena');
     

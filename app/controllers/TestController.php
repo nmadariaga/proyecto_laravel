@@ -8,7 +8,7 @@ class TestController extends BaseController {
             $rut = Auth::user()->rut;
             $perfil = Funcionarios::where('rut', '=', $rut)->get();
             $dpto1 = Funcionarios::where('rut', '=', $rut)->get(array('departamento_fk'));
-            $dpto = Departamentos::find($dpto1);
+            $dpto = Departamentos::find(1);
             return $this->layout->content = View::make('test/datos', compact('rut', 'perfil', 'dpto'));
         }
     }
