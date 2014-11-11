@@ -7,15 +7,21 @@
 
 <h2>Ingreso de Registros</h2>
 
-<p>
-    Tipo de Documento: </br>     {{Form::text("tipo_documento",Input::old('tipo_documento'),array('class' =>'form-control','required autofocus'))}} 
-</p>
-<p>
-    Procedencia: </br>       {{Form::text("procedencia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}} 
-</p>
-<p>
-    Materia: </br>          {{Form::text("materia",Input::old('materia'),array('class' =>'form-control','required autofocus'))}} 
-</p>
+<div class="form-group">
+  <label class="control-label">Tipo de Documento</label>
+  {{Form::text("tipo_documento",Input::old('tipo_documento'),array('class' =>'form-control','required autofocus'))}} 
+</div>
+
+<div class="form-group">
+  <label class="control-label">Procedencia</label>
+  {{Form::text("procedencia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
+</div>
+
+<div class="form-group">
+  <label class="control-label">Materia</label>
+  {{Form::text("materia",Input::old('materia'),array('class' =>'form-control','required autofocus'))}}
+</div>
+
 @if($errors->has('tipo_documento'))
 <p class="alert alert-danger" role="alert">
     @foreach($errors->get('tipo_documento') as $error )

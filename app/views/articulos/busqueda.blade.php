@@ -26,7 +26,10 @@
         @endforeach
    
     </table>
-        {{$datos->links()}}                           
+    <ul class="pagination">
+       {{$datos->links()}} 
+    </ul>
+                                   
     </br>
 </div>
 @else
