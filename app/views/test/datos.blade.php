@@ -11,7 +11,6 @@
             <li class="list-group-item">Apellidos:  {{$perfil->apellidos}}</li>
             <li class="list-group-item">Rut:        {{$perfil->rut}}</li>
             <li class="list-group-item">E-mail:  <a> {{$perfil->email}} </a></address></li>
-            
             <li class="list-group-item">Departamento:  {{$dpto->nombre}}   <a></a></address></li>  
             @endforeach
             </br> 

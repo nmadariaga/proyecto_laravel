@@ -8,17 +8,17 @@
 <h2>Ingreso de Registros</h2>
 
 <p>
-    Tipo de Registro: </br>     {{Form::text("tipo_registro",Input::old('numero_registro'),array('class' =>'form-control','required autofocus'))}} 
+    Tipo de Documento: </br>     {{Form::text("tipo_documento",Input::old('tipo_documento'),array('class' =>'form-control','required autofocus'))}} 
 </p>
 <p>
     Procedencia: </br>       {{Form::text("procedencia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}} 
 </p>
 <p>
-    Materia: </br>          {{Form::text("materia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}} 
+    Materia: </br>          {{Form::text("materia",Input::old('materia'),array('class' =>'form-control','required autofocus'))}} 
 </p>
-@if($errors->has('numero_registro'))
+@if($errors->has('tipo_documento'))
 <p class="alert alert-danger" role="alert">
-    @foreach($errors->get('numero_registro') as $error )
+    @foreach($errors->get('tipo_documento') as $error )
     <strong>{{ $error }}</strong> </br>
     @endforeach
 

@@ -7,7 +7,7 @@
 <h2>Actualizar Publicación</h2>
 
 <p>
-    Tipo de Registro: </br>     {{Form::text("tipo_registro",$datos['tipo_registro'],array('class' =>'form-control','required autofocus'))}} 
+    Tipo de Registro: </br>     {{Form::text("tipo_documento",$datos['tipo_documento'],array('class' =>'form-control','required autofocus'))}} 
 </p>
 @if($errors->has('tipo_registro'))
 <p class="alert alert-danger" role="alert">

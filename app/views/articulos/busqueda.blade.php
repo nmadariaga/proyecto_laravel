@@ -4,10 +4,31 @@
 
 <h2>Resultados busqueda</h2>
 @if(count($datos)>0)
-@foreach($datos as $dato)
-<h3>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_registro)}}</a></h3>
-<p>{{$dato->observaciones}}</p>
-@endforeach
+<div class="panel panel-primary">
+    <div class="panel-heading">Mis Registros </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th>Tipo de Documento</th>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        @foreach($datos as $dato)
+        <tbody>
+            <tr>
+                <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
+                <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
+                <td>{{HTML::link('articulos/delete/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary'))}}</td>
+            </tr>
+        </tbody>
+        @endforeach
+   
+    </table>
+        {{$datos->links()}}                           
+    </br>
+</div>
 @else
 <p class="alert alert-danger" role="alert">
     <strong>Su busqueda no arrojo Resultados.</strong> 

@@ -17,10 +17,10 @@ class ArticulosController extends BaseController {
 
     public function get_busqueda($buscar = null) {
         $p = Input::get('buscar');
-        $datos = Registros::where('tipo_registro', 'LIKE','%'.$p.'%' )
+        $datos = Registros::where('tipo_documento', 'LIKE','%'.$p.'%' )
         ->orwhere('materia', 'LIKE', '%'.$p.'%')
         ->orwhere('procedencia', 'LIKE', '%'.$p.'%')
-        ->get();
+        ->paginate(8);
         return View::make('articulos.busqueda', compact("datos"));
     }
 
@@ -35,7 +35,7 @@ class ArticulosController extends BaseController {
         $inputs = Input::All();
         $reglas = array
             (
-            'tipo_registro' => 'unique:registros',
+            'tipo_documento' => 'unique:registros',
             'materia' => 'min:5'
         );
         $validar = Validator::make($inputs, $reglas);
@@ -46,7 +46,7 @@ class ArticulosController extends BaseController {
 
             $inputs = Input::All();
             $n = new Registros();
-            $n->tipo_registro = $inputs["tipo_registro"];
+            $n->tipo_documento = $inputs["tipo_documento"];
             $n->procedencia = $inputs["procedencia"];
             $n->materia = $inputs["materia"];
             $n->fecha = date("d-m-Y");
@@ -67,7 +67,7 @@ class ArticulosController extends BaseController {
         $inputs = Input::All();
         $reglas = array
             (
-            'tipo_registro' => 'unique:registros',
+            'tipo_documento' => 'unique:registros',
             'materia' => 'min:6',
         );
         $validar = Validator::make($inputs, $reglas);
@@ -75,7 +75,7 @@ class ArticulosController extends BaseController {
             return Redirect::back()->withErrors($validar)->withInput();
         } else {
             $n = Registros::find($inputs['id']);
-            $n->tipo_registro = $inputs["tipo_registro"];
+            $n->tipo_documento = $inputs["tipo_documento"];
             $n->procedencia = $inputs["procedencia"];
             $n->materia = $inputs["materia"];
             $n->fecha = date("Y-m-d");
@@ -86,9 +86,11 @@ class ArticulosController extends BaseController {
     }
 
     public function getDelete($id = null) {
-        $borrar = Registros::find($id);
-        $borrar->delete();
-        return Redirect::to('inicio');
+            $borrar = Registros::find($id);
+            $borrar->delete();
+            return Redirect::to('inicio');
+        
+        
     }
 
 }

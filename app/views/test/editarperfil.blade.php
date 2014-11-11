@@ -55,22 +55,6 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label for="exampleInput" class="col-sm-2 control-label">Editar su Dirección</label>
-    <div class="col-sm-10">
-        {{ Form::text('direccion',$datos['direccion'],array('class' =>'form-control', 'placeholder'=>'Dirección','required autofocus') )}}
-    </div>
-    <div class="col-sm-10">
-        @if($errors->has('direccion'))
-        <div class="alert alert-danger" role="alert">
-            @foreach($errors->get('direccion') as $error )
-            <strong>{{ $error }}</strong> </br>
-            @endforeach
-        </div>
-        @endif
-
-    </div>
-</div>
 
 
 {{Form::hidden('id',$datos['id'])}}
@@ -82,7 +66,7 @@
 
 </div>
 @endif
-<h3><a href="{{ URL::to('inicio') }}">Volver atrás</a></h3> 
+<h3><a href="{{ URL::to('test/datos') }}">Volver atrás</a></h3> 
 <br></br>
 {{Form::close()}}
 

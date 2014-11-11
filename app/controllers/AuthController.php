@@ -42,7 +42,7 @@ class AuthController extends BaseController {
         if (Auth::user()->rol_fk == 1) {
             $rut = Auth::user()->rut;
             $perfil = Funcionarios::where('rut', '=', $rut)->get();
-            $datos = Registros::where('rut', '=', $rut)->paginate(3);
+            $datos = Registros::orderBy('fecha','desc')->paginate(5);
             return View::make('/test/perfil', compact(array("datos", "perfil", "rut","dpto1")));
         } else
             return Redirect::to('/home/hello');

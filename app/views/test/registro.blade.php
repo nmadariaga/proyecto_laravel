@@ -9,13 +9,13 @@
 <div class="form-group" >
     <label for="formGroupInputLarge" class="col-sm-2 control-label">Tipo de Usuario</label>
     <div class="col-sm-10">
-        {{Form::select('rol', Roles::lists('rol', 'id'),Input::old('rol'),array('class' =>'form-control'))}}
+        {{Form::select('rol', Roles::lists('rol', 'id'),Input::old('rol'),array('class' =>'form-control','required autofocus'))}}
     </div>
 </div>
 <div class="form-group">
     <label for="exampleInput" class="col-sm-2 control-label">Ingrese su Rut</label>
     <div class="col-sm-10">
-        {{ Form::text('rut',Input::old('rut'),array('class' =>'form-control', 'placeholder'=>'Rut','required autofocus','name'=>'rut') )}}
+        {{ Form::text('rut',Input::old('rut'),array('class' =>'form-control', 'placeholder'=>'Rut','name'=>'rut') )}}
     </div>
     <div class="col-sm-10">
         @if($errors->has('rut'))

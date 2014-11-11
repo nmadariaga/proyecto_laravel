@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Proyecto Laravel</title>
         {{ HTML::style('assets/css/bootstrap.min.css',array('rel' => 'stylesheet')) }}
         {{ HTML::style('css/jumbotron-narrow.css',array('rel' => 'stylesheet')) }}
         {{ HTML::script('assets/js/ie-emulation-modes-warning.js')}}
         
     </head>
-    <title>Proyecto Laravel</title>
+    
     <div class="container">
             <div class="header">
             
