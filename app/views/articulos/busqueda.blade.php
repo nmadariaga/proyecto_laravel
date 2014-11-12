@@ -5,7 +5,7 @@
 <h2>Resultados busqueda</h2>
 @if(count($datos)>0)
 <div class="panel panel-primary">
-    <div class="panel-heading">Mis Registros </div>
+    <div class="panel-heading">Registros </div>
     <table class="table table-striped">
         <thead>
             <tr>

@@ -7,6 +7,12 @@
 
 </div>
 @endif
+@if(Session::has('borrar'))
+<div class="alert alert-success" role="alert">
+    <strong>{{Session::get('borrar')}}</strong> 
+
+</div>
+@endif
 <div class="jumbotron">
     @foreach($perfil as $nombre)
     <h2>Bienvenido {{$nombre->nombres}}</h2>
@@ -30,7 +36,7 @@
             <tr>
                 <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
                 <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
-                <td>{{HTML::link('articulos/delete/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary '))}}</td>
+                <td>{{HTML::link('articulos/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary '))}}</td>
             </tr>
         </tbody>
         @endforeach
@@ -53,7 +59,7 @@
         {{ Form::close() }}
 
 
-    </div>
+    </div> 
 
 </div>
 

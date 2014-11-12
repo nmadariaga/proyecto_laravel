@@ -1,8 +1,10 @@
 @extends('layouts.master')
-
 @section('contenido')
 
-    <div class="list-group">
+<h3>Desea eliminar el registro?</h3>
+
+        
+ <div class="list-group">
         <a href="#" class="list-group-item active">
             <h4 class="list-group-item-heading">Registro</h4>
         </a>
@@ -23,7 +25,14 @@
             <p class="list-group-item-text">{{$registros->fecha}}</p>
         </a>
     </div>
-<h3><a href="{{ URL::to('inicio') }}">Volver atrás</a></h3>
+             <td>{{HTML::link("inicio", 'Cancelar',array('class' =>'btn btn-primary btn-lg'))}}</td>
+                <td>{{HTML::link('articulos/delete/' . $registros->id,'Eliminar',array('class' =>'btn btn-danger btn-lg '))}}</td> 
 <br></br>
 
 @stop
+
+
+
+
+
+

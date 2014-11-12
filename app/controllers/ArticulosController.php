@@ -79,14 +79,23 @@ class ArticulosController extends BaseController {
             $n->tipo_documento = $inputs["tipo_documento"];
             $n->procedencia = $inputs["procedencia"];
             $n->materia = $inputs["materia"];
-            $n->fecha = date("Y-m-d");
+            $n->fecha = date("d-m-Y");
             $n->save();
             Session::flash('mensaje', 'Su registro se actualizo correctamente');
             return Redirect::to('inicio');
         }
     }
 
-    public function getDelete($id = null) {
+    public function get_delete($id = null) {
+            $borrar = Registros::find($id);
+            $borrar->delete();
+            return Redirect::to('inicio')->with('borrar','El registro se elimino satisfactoriamente');
+        
+        
+    }
+    public function get_confirmar($id = null) {
+            $registros = Registros::find($id);
+            return view::make('test/confirmar',compact('registros'));
             $borrar = Registros::find($id);
             $borrar->delete();
             return Redirect::to('inicio');

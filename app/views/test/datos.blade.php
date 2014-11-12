@@ -7,24 +7,34 @@
 </div>
 @endif
 <div class="row marketing">
-    <div class="panel panel-primary">
-        <div class="panel-heading">Mi Perfil</div>
-        <ul class="list-group">
-            @foreach($perfil as $perfil)
-            
-            <li class="list-group-item"><b>Nombres:</b>    {{$perfil->nombres}}</li> 
-            <li class="list-group-item"><b>Apellidos:</b>  {{$perfil->apellidos}}</li>
-            <li class="list-group-item"><b>Rut:</b>        {{$perfil->rut}}</li>
-            <li class="list-group-item"><b>E-mail:</b>  <a> {{$perfil->email}} </a></address></li>
-            <li class="list-group-item"><b>Departamento:</b>  {{$dpto->nombre}}   <a></a></address></li>  
-            @endforeach
-            </br> 
-        </ul>
-        
-        
+  @foreach($perfil as $perfil)
+     <div class="list-group">
+        <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">Mi Perfil</h4>
+        </a>
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Nombres</h4>
+            <p class="list-group-item-text">{{$perfil->nombres}}</p>
+        </a>
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Apellidos </h4>
+            <p class="list-group-item-text">{{$perfil->apellidos}}</p>
+        </a>
+         <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Rut </h4>
+            <p class="list-group-item-text">{{$perfil->rut}}</p>
+        </a>
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">E-Mail</h4>
+            <p class="list-group-item-text">{{$perfil->email}}</p>
+        </a>
+        <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">Departamento</h4>
+            <p class="list-group-item-text">{{$perfil->departamento}}</p>
+        </a>
     </div>
     
-     
+   @endforeach  
     {{HTML::link('test/editar/'.$perfil->id,'Editar mis Datos',array('class' =>'btn btn-primary btn-lg')) }}
 
 
