@@ -12,13 +12,16 @@ Route::get('inicio2', 'AuthController@getAdmin', array('before' => 'auth'));
 
 Route::get('logout', 'AuthController@getLogout', array('before' => 'auth'));
 
+Route::get('password/remind', 'ReminderController@remind');
+
+Route::post('password/remind', 'ReminderController@request');
+
+Route::post('password/reset/{token}','ReminderController@update');
+
 Route::get('/contacto', function() {
     return View::make('home/contacto');
 });
-
-Route::get('reminder', function() {
-    return View::make('/reminder');
-});
+Route::get('password/reset/{token}','PasswordController@reset');
 
 Route::get('/hello', function() {
     return View::make('hello');

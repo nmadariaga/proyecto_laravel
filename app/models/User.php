@@ -8,6 +8,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     
     use RemindableTrait;
     
+    public function PasswordReminders() {
+        return $this->hasMany('passwords_reminders');
+    }
     //protected $fillable = array('rut','contrasena');//nombre', 'correo', 'password');
     public $timestamps=false;
 

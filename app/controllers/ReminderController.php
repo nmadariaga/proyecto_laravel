@@ -2,48 +2,38 @@
 
 class ReminderController extends BaseController {
 
-public function create()
-	{
-		return View::make('password_resets.create');
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		Password::remind(Input::get('email'), function($message)
+public function remind()
+  {
+    return View::make('password/remind');
+  }
+  
+  public function request()
+{
+  switch ($response = Password::remind(Input::only('email')))
 		{
-			$message->subject('Your Password Reminder');
-		});
+			case Password::INVALID_USER:
+				return Redirect::back()->with('error', Lang::get($response));
+			case Password::REMINDER_SENT:
+				return Redirect::back()->with('status', Lang::get($response));
+		}
+}
+public function reset($token)
+{
+  return View::make('password/reset')->with('token', $token);
+}
 
-		$status = Session::has('error') ? 'Could not find user with that email address.' : 'Please check your email!';
-
-		return Redirect::route('reminder')->withStatus($status);
-	}
-
-	public function reset($token)
-	{
-		return View::make('password_resets.reset')->withToken($token);
-	}
-
-	public function postReset()
-	{
-		$creds = [
-			'Correo_electronico' => Input::get('email'),
-			'Password' => Input::get('password'),
-			'password_confirmation' => Input::get('password_confirmation')
-		];
-
-		return Password::reset($creds, function($user, $password)
-		{
-			$user->password = Hash::make($password);
-			$user->save();
-
-			return Redirect::route('sessions.create');
-		});
-	}
+public function update()
+{
+  $credentials = array('email' => Input::get('email'));
+ 
+  return Password::reset($credentials, function($usuarios, $password)
+  {
+    $usuarios->contrasena = Hash::make($password);
+ 
+    $usuarios->save();
+ 
+    return Redirect::to('home/ingreso')->with('flash', 'Your password has been reset');
+  });
+}
 
 }

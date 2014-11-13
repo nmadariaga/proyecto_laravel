@@ -67,7 +67,7 @@ class ArticulosController extends BaseController {
         $inputs = Input::All();
         $reglas = array
             (
-            'tipo_documento' => 'unique:registros|min:5',
+            'tipo_documento' => 'min:5',
             'materia' => 'min:5',
             'procedencia' => 'min:5'
         );
@@ -76,11 +76,15 @@ class ArticulosController extends BaseController {
             return Redirect::back()->withErrors($validar)->withInput();
         } else {
             $n = Registros::find($inputs['id']);
+            if($n->tipo_documento != $inputs["tipo_documento"]);
             $n->tipo_documento = $inputs["tipo_documento"];
+            if($n->procedencia != $inputs["procedencia"])
             $n->procedencia = $inputs["procedencia"];
+            if($n->materia != $inputs["materia"])
             $n->materia = $inputs["materia"];
             $n->fecha = date("d-m-Y");
             $n->save();
+
             Session::flash('mensaje', 'Su registro se actualizo correctamente');
             return Redirect::to('inicio');
         }

@@ -36,7 +36,7 @@
         
 
 <div class="form-group">
-    <h4 class="form-signin-heading">Olvido su contraseña?  {{ HTML::link('reminder','Recordar')}}</h4>
+    <h4 class="form-signin-heading">Olvido su contraseña?  {{ HTML::link('password/remind','Recordar')}}</h4>
     <h3><a href="{{ URL::to('/') }}">Volver atrás</a></h3> 
 </div> 
 {{ Form::close() }}

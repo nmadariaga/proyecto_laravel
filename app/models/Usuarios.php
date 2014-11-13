@@ -1,13 +1,20 @@
 <?php
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
- 
+
 Class Usuarios extends Eloquent implements UserInterface,RemindableInterface{
  
     protected $table = 'usuarios';
+    
+    public function PasswordReminders() {
+        return $this->hasMany('passwords_reminders');
+    }
+    //protected $table = 'passwords_reminders';
     //protected $fillable = array('rut','contrasena','remember_token','rol_fk');//nombre', 'correo', 'password');
     public $timestamps=false;
     protected $hidden = array('contrasena');
+    
+    protected $fillable = array('rut', 'email');
     
     public function Roles() {
         return $this->belongsTo('Roles');
