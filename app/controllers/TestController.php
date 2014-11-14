@@ -56,6 +56,7 @@ class TestController extends BaseController {
                 $usuario->contrasena = $contrasena;
                 $usuario->remember_token = $contrasena;
                 $usuario->rol_fk = Input::get('rol');
+                $usuario->email = Input::get('email');
                 $usuario->save();
                 Session::flash('completo', 'Usuario Registrado Satisfactoriamente.');
                 return Redirect::to('inicio2');
@@ -66,7 +67,7 @@ class TestController extends BaseController {
                 $data->rut = Input::get('rut');
                 $data->nombres = Input::get('nombres');
                 $data->apellidos = Input::get('apellidos');
-                $data->departamento_fk = Input::get('departamento');
+                //$data->departamento_fk = Input::get('departamento');
                 $data->email = Input::get('email');
                 $data->genero = Input::get('genero');
                 $data->save();
@@ -76,9 +77,10 @@ class TestController extends BaseController {
                 $usuario->contrasena = $contrasena;
                 $usuario->remember_token = $contrasena;
                 $usuario->rol_fk = Input::get('rol');
+                $usuario->email = Input::get('email');
                 $usuario->save();
                 Session::flash('completo', 'Usuario Registrado Satisfactoriamente.');
-                return Redirect::to('test/registro');
+                return Redirect::to('inicio2');
             }
         }
     }
@@ -129,7 +131,7 @@ class TestController extends BaseController {
         $data->direccion = Input::get('direccion');
         $data->save();
         Session::flash('completo', 'sus datos se actualizaron correctamente');
-        return Redirect::to('test/editaradmin');
+        return Redirect::to('test/datosadmin');
     }
 
 }

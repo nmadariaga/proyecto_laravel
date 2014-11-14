@@ -23,7 +23,7 @@
 </div>
 
 <div class="form-group">
-    {{ Form::password('contrasena',array('class' =>'form-control', 'placeholder'=>'Contraseña','required autofocus')) }}
+    {{ Form::password('contrasena',array('class' =>'form-control', 'placeholder'=>'Password','required autofocus')) }}
 </div>
 
 @if(Session::has('mensaje'))

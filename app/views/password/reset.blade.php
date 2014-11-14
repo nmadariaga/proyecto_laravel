@@ -5,7 +5,7 @@
   {{ trans(Session::get('reason')) }}
 @endif
  
-{{ Form::open(array('route' => array('password.update', $token))) }}
+{{ Form::open(array('url' => array('password/reset', $token))) }}
  
   <p>{{ Form::label('email', 'Email') }}
   {{ Form::text('email') }}</p>

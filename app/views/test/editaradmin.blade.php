@@ -4,7 +4,7 @@
 
 
 <h2 class="form-signin-heading">Editar Datos</h2>
-{{ Form::open(array('method'=>'post','url' => 'test/editar','class'=>'form-horizontal','name'=>'form1','files' => true)) }}
+{{ Form::open(array('method'=>'post','url' => 'test/editaradmin','class'=>'form-horizontal','name'=>'form1','files' => true)) }}
 
 
 <div class="form-group">

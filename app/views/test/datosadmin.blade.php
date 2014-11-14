@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('contenido')
+@if(Session::has('completo'))
+<div class="alert alert-success" role="alert">
+    <strong>{{Session::get('completo')}}</strong> 
 
+</div>
+@endif
 <div class="row marketing">
       @foreach($perfil2 as $perfil)
      <div class="list-group">

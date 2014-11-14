@@ -24,7 +24,10 @@ class AuthController extends BaseController {
             'contrasena' => Input::get('contrasena'),
             //'rol_fk' => Input::get('rol')
         );
+        //$user = Usuarios::find(1);
 
+         //Auth::login($user);
+        //return Redirect::to('inicio2');
         if (Auth::attempt($user_data)) {
             if (Auth::user()->rol_fk == 2)
                 return Redirect::to('inicio2');
@@ -32,29 +35,27 @@ class AuthController extends BaseController {
                 if (Auth::user()->rol_fk == 1)
                     return Redirect::to('inicio');
                 else
-                    return Redirect::to('/home/ingreso')->with('mensaje', 'Rut o Contraseña Incorrectos. ')->withInput();
+                    return Redirect::to('/home/ingreso')->with('mensaje', 'Ruttttttt o Contraseña Incorrectos. ')->withInput();
             }
         } else
             return Redirect::to('/home/ingreso')->with('mensaje', 'Rut o Contraseña Incorrectos. ')->withInput();
     }
 
     public function getPerfil() {
-        if (Auth::user()->rol_fk == 1) {
+        
             $rut = Auth::user()->rut;
             $perfil = Funcionarios::where('rut', '=', $rut)->get();
             $datos = Registros::where('rut','=',$rut)->orderBy('fecha','desc')->paginate(5);
             return View::make('/test/perfil', compact(array("datos", "perfil", "rut")));
-        } else
-            return Redirect::to('/home/hello');
+       
     }
 
     public function getAdmin() {
-        if (Auth::user()->rol_fk == 2) {
+        
             $rut = Auth::user()->rut;
             $perfil2 = Administradores::where('rut', '=', $rut)->get();
             return View::make('/test/admin', compact(array("perfil2", "rut")));
-        } else
-            return Redirect::to('/home/hello');
+      
     }
 
     public function getLogout() {
