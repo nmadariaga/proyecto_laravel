@@ -34,7 +34,7 @@ return array(
 	"digits"               => "The :attribute must be :digits digits.",
 	"digits_between"       => "The :attribute must be between :min and :max digits.",
 	"email"                => "El :attribute debe ser una dirección valida.",
-	"exists"               => "The selected :attribute is invalid.",
+	"exists"               => "El :attribute seleccionado no se encuentra en la base de datos.",
 	"image"                => "The :attribute must be an image.",
 	"in"                   => "The selected :attribute is invalid.",
 	"integer"              => "El campo :attribute debe ser un entero.",

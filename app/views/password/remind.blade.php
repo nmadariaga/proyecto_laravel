@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.inicio')
 
 @section('contenido')
 {{ HTML::style('css/signin.css') }}

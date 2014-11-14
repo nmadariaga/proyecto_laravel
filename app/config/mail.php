@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'correspondenciautem@gmail.com', 'name' => 'Correspondencia'),
+	'from' => array('address' => 'noreply@gmail.com', 'name' => 'Correspondencia'),
 
 	/*
 	|--------------------------------------------------------------------------
