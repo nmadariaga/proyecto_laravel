@@ -43,6 +43,18 @@
 
 </p>
 @endif
+<div class="form-group">
+  <label class="control-label">Observaciones</label>
+  {{Form::text("observaciones",$datos['observaciones'],array('class' =>'form-control','required autofocus'))}}
+</div>
+@if($errors->has('observaciones'))
+<p class="alert alert-danger" role="alert">
+    @foreach($errors->get('observaciones') as $error )
+    <strong>{{ $error }}</strong> </br>
+    @endforeach
+
+</p>
+@endif
 {{Form::hidden('id',$datos['id'])}}
 {{ Form::submit('Actualizar',array('class' =>'btn btn-lg btn-primary btn-block')) }}
 <h3><a href="{{ URL::to('inicio') }}">Volver atrás</a></h3> 

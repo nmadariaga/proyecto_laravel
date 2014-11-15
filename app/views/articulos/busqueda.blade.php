@@ -20,7 +20,7 @@
             <tr>
                 <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
                 <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
-                <td>{{HTML::link('articulos/delete/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary'))}}</td>
+                <td>{{HTML::link('articulos/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary'))}}</td>
             </tr>
         </tbody>
         @endforeach

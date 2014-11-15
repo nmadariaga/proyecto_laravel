@@ -11,11 +11,6 @@
 
 {{ HTML::style('css/signin.css') }}
 {{ Form::open(array('url' =>'login','class'=>'form-signin','name'=>'form1','onSubmit'=>"javascript:return Rut(document.form1.rut.value)")) }}
-@if(Session::has('reset'))
-<div class="alert alert-success" role="success">
-    <strong>{{Session::get('reset')}}</strong> 
-</div>
-@endif
 <h2 class="form-signin-heading">Ingrese a su Cuenta</h2>
 
 <!--div class="form-group">
@@ -35,7 +30,11 @@
     <strong>{{Session::get('mensaje')}}</strong> 
 </div>
 @endif
-    
+ @if(Session::has('reset'))
+<div class="alert alert-danger" role="alert">
+    <strong>{{Session::get('reset')}}</strong> 
+</div>
+@endif   
 {{ Form::submit('ingresar',array('class' =>'btn btn-lg btn-primary btn-block','value'=>'Validar RUT')) }}
         
 

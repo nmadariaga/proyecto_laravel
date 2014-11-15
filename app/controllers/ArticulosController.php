@@ -16,20 +16,18 @@ class ArticulosController extends BaseController {
     }
 
     public function get_busqueda($buscar = null) {
-        $p = Input::get('buscar');
-        $datos = Registros::where('tipo_documento', 'LIKE','%'.$p.'%' )
-        ->orwhere('materia', 'LIKE', '%'.$p.'%')
-        ->orwhere('procedencia', 'LIKE', '%'.$p.'%')
-        ->paginate(8);
-        return View::make('articulos.busqueda', compact("datos"));
-    }
 
-    public function get_categoria() {
-        $n = Input::get('tipo');
-        $datos = Registros::where('tipo_fk', '=', $n)->get();
+        $datos = Registros::where(function ($query) {
+                    $rut = Auth::user()->rut;
+                    $query->where('rut', '=', $rut);
+                })->where(function ($query) {
+                    $p = Input::get('buscar');
+                    $query->where('materia', 'LIKE', '%' . $p . '%')
+                            ->orwhere('procedencia', 'LIKE', '%' . $p . '%')
+                            ->orwhere('tipo_documento', 'LIKE', '%' . $p . '%');
+                })->paginate(8);
         return View::make('articulos.busqueda', compact("datos"));
     }
-      
 
     public function post_add() {
         $inputs = Input::All();
@@ -37,7 +35,8 @@ class ArticulosController extends BaseController {
             (
             'tipo_documento' => 'unique:registros|min:5',
             'materia' => 'min:5',
-            'procedencia' => 'min:5'
+            'procedencia' => 'min:5',
+            'observaciones' => 'min:5'
         );
         $validar = Validator::make($inputs, $reglas);
         if ($validar->fails()) {
@@ -50,7 +49,7 @@ class ArticulosController extends BaseController {
             $n->tipo_documento = $inputs["tipo_documento"];
             $n->procedencia = $inputs["procedencia"];
             $n->materia = $inputs["materia"];
-            $n->fecha = date("d-m-Y");
+            $n->observaciones = $inputs["observaciones"];
             $n->rut = $inputs["rut"];
             $n->autor = $inputs["autor"];
             $n->save();
@@ -58,6 +57,7 @@ class ArticulosController extends BaseController {
             return Redirect::to('inicio');
         }
     }
+
     public function get_editar($id = null) {
         $datos = Registros::find($id);
         return $this->layout->content = View::make('articulos/editar', compact("datos"));
@@ -69,20 +69,18 @@ class ArticulosController extends BaseController {
             (
             'tipo_documento' => 'min:5',
             'materia' => 'min:5',
-            'procedencia' => 'min:5'
+            'procedencia' => 'min:5',
+            'observaciones' => 'min:5'
         );
         $validar = Validator::make($inputs, $reglas);
         if ($validar->fails()) {
             return Redirect::back()->withErrors($validar)->withInput();
         } else {
             $n = Registros::find($inputs['id']);
-            if($n->tipo_documento != $inputs["tipo_documento"]);
             $n->tipo_documento = $inputs["tipo_documento"];
-            if($n->procedencia != $inputs["procedencia"])
             $n->procedencia = $inputs["procedencia"];
-            if($n->materia != $inputs["materia"])
             $n->materia = $inputs["materia"];
-            $n->fecha = date("d-m-Y");
+            $n->observaciones = $inputs["observaciones"];
             $n->save();
 
             Session::flash('mensaje', 'Su registro se actualizo correctamente');
@@ -91,20 +89,14 @@ class ArticulosController extends BaseController {
     }
 
     public function get_delete($id = null) {
-            $borrar = Registros::find($id);
-            $borrar->delete();
-            return Redirect::to('inicio')->with('borrar','El registro se elimino satisfactoriamente');
-        
-        
+        $borrar = Registros::find($id);
+        $borrar->delete();
+        return Redirect::to('inicio')->with('borrar', 'El registro se elimino satisfactoriamente');
     }
+
     public function get_confirmar($id = null) {
-            $registros = Registros::find($id);
-            return view::make('test/confirmar',compact('registros'));
-            $borrar = Registros::find($id);
-            $borrar->delete();
-            return Redirect::to('inicio');
-        
-        
+        $registros = Registros::find($id);
+        return view::make('test/confirmar', compact('registros'));
     }
 
 }

@@ -44,7 +44,18 @@
 
 </p>
 @endif
+<div class="form-group">
+  <label class="control-label">Observaciones</label>
+  {{Form::text("observaciones",Input::old('observaciones'),array('class' =>'form-control','required autofocus'))}}
+</div>
+@if($errors->has('observaciones'))
+<p class="alert alert-danger" role="alert">
+    @foreach($errors->get('observaciones') as $error )
+    <strong>{{ $error }}</strong> </br>
+    @endforeach
 
+</p>
+@endif
 
 
 

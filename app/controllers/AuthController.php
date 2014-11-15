@@ -21,13 +21,8 @@ class AuthController extends BaseController {
 
         $user_data = array(
             'rut' => Input::get('rut'),
-            'contrasena' => Input::get('contrasena'),
-            //'rol_fk' => Input::get('rol')
+            'contrasena' => Input::get('contrasena')
         );
-        //$user = Usuarios::find(1);
-
-         //Auth::login($user);
-        //return Redirect::to('inicio2');
         if (Auth::attempt($user_data)) {
             if (Auth::user()->rol_fk == 2)
                 return Redirect::to('inicio2');

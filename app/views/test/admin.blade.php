@@ -17,7 +17,7 @@
 <div class="row marketing"> 
     
     {{HTML::link('test/registro/','Crear Usuario',array('class' =>'btn btn-primary btn-lg')) }}
-
+    {{HTML::link('test/usuarios/','Ver Usuarios',array('class' =>'btn btn-primary btn-lg')) }}
 
     {{Form::close()}}
 </div>

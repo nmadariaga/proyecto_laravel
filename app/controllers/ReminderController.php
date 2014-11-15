@@ -50,7 +50,7 @@ class ReminderController extends BaseController {
 			case Password::INVALID_USER:
 				return Redirect::back()->with('error', 'No se encuentra el usuario');
 			case Password::PASSWORD_RESET:
-				return Redirect::to('home/ingreso')->with('mensaje', 'Su contraseña ha sido reestablecida');
+				return Redirect::to('home/ingreso')->with('reset', 'Su contraseña ha sido reestablecida');
 		}
 
     }

@@ -84,11 +84,19 @@ class TestController extends BaseController {
             }
         }
     }
-
+    public function get_usuarios() {
+        $datos = Funcionarios::all();
+        $dpto = Departamentos::find(1);
+        return $this->layout->content = View::make('test/usuarios', compact("datos","dpto"));
+    }
     public function get_editar($id = null) {
         $datos = Funcionarios::find($id);
         return $this->layout->content = View::make('test/editarperfil', compact("datos"));
     }
+    /* public function get_desactivar($rut = null) {
+        $registros = Usuarios::where('rut','=',$rut);
+        return view::make('test/desactivar',compact('registros'));
+    }*/
 
     public function post_editar() {
         $inputs = Input::All();
