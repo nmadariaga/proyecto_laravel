@@ -133,11 +133,14 @@ class TestController extends BaseController {
             return Redirect::back()->withErrors($validar)->withInput();
         } else
             $data = Administradores::find($inputs['id']);
+            $user = Auth::user()->id;
+            $usuario = Usuarios::find($user);
         $data->nombres = Input::get('nombres');
         $data->apellidos = Input::get('apellidos');
         $data->email = Input::get('email');
-        $data->direccion = Input::get('direccion');
         $data->save();
+        $usuario->email =Input::get('email');
+        $usuario->save();
         Session::flash('completo', 'sus datos se actualizaron correctamente');
         return Redirect::to('test/datosadmin');
     }
