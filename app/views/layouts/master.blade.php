@@ -4,23 +4,37 @@
     <head>
         <title>Proyecto Laravel</title>
         {{ HTML::style('assets/css/bootstrap.min.css',array('rel' => 'stylesheet')) }}
+        {{ HTML::style('assets/css/bootstrap-theme.min.css',array('rel' => 'stylesheet')) }}
         {{ HTML::style('css/jumbotron-narrow.css',array('rel' => 'stylesheet')) }}
         {{ HTML::script('assets/js/ie-emulation-modes-warning.js')}}
+        {{ HTML::style('css/nav.css',array('rel' => 'stylesheet')) }}
         
     </head>
     
     <div class="container">
-            <div class="header">
+        <div class="masthead">
+            <p class="aligncenter">{{ HTML::image('/imagenes/utem4.png')}}</p>
+      </div>
+        <div class="navbar navbar-default">
+  <div class="navbar-collapse collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+      <li>{{ HTML::link('/','Inicio')}}</li>
+      <li>{{HTML::link('articulos/busqueda','Buscar')}}</li>
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registros <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li>{{HTML::link('articulos/registros/','Ver Registros')}}</li>
+          <li>{{HTML::link('articulos/add/','Ingresar Registro')}}</li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>{{HTML::link('logout','Cerrar Sesión')}}</li>
+    </ul>
+  </div>
+</div>
             
-            <ul class="nav nav-pills pull-right">
-                
-                
-                   <li>{{ HTML::link('/','Inicio')}}</li>
-                   <li>{{HTML::link('logout','Salir')}}</li>
-                
-            </ul>
-            <p class="text-muted">{{ HTML::image('/imagenes/utem2.png')}}</p>
-        </div>
         
 
         @yield('contenido')

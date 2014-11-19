@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('contenido')
 
@@ -32,8 +32,6 @@
     </br>
 </div>
 
-
-<br></br>
 <h3><a href="{{ URL::to('inicio2') }}">Volver atrás</a></h3> 
 
 @stop

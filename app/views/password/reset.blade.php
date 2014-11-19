@@ -4,7 +4,7 @@
 {{ HTML::style('css/signin.css') }}
 
 {{ Form::open(array('url' => array('password/reset', $token),'class'=>'form-signin')) }}
-<h2 class="form-signin-heading">Resetear Contraseña</h2>
+<h2 class="form-signin-heading">Reestablecer Contraseña</h2>
 <div class="form-group">
 
     <label class="control-label">Ingrese su E-Mail</label>

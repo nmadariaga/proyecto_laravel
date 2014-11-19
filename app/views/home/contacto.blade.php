@@ -11,7 +11,6 @@
                 <a href="http://bienestarestudiantil.blogutem.cl/ ">Servicio bienestar estudiantil, UTEM</a>
                 <br> 
                 <h3><a href="{{ URL::to('/') }}">Volver atrás</a></h3>
-                </br>
 
 
 @stop

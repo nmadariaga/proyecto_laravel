@@ -2,44 +2,20 @@
 
 @section('contenido')
 
-<h2>Resultados busqueda</h2>
-@if(count($datos)>0)
-<div class="panel panel-primary">
-    <div class="panel-heading">Registros </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
 
-                <th>Tipo de Documento</th>
-                <th>Actualizar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        @foreach($datos as $dato)
-        <tbody>
-            <tr>
-                <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
-                <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
-                <td>{{HTML::link('articulos/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary'))}}</td>
-            </tr>
-        </tbody>
-        @endforeach
-   
-    </table>
-    <ul class="pagination">
-       {{$datos->links()}} 
-    </ul>
-                                   
-    </br>
-</div>
-@else
-<p class="alert alert-danger" role="alert">
-    <strong>Su busqueda no arrojo Resultados.</strong> 
 
-</p>
-@endif
+    <div>
+        <h2>Buscar Registros</h2>
+        {{Form::open(array('method'=>'post','url'=>'/articulos/resultados',"name"=>"navbar-form navbar-left", 'role' => 'search'))}}
+        {{ Form::text('buscar',Input::old('buscar'),array('class'=>'form-control','placeholder'=>'Ingrese su Busqueda', 'required')) }}
+        {{ Form::submit("Buscar",array('class'=>'btn btn-default')) }}</br>
+        {{ Form::close() }}
 
-<br></br>
-<h3><a href="{{ URL::to('inicio') }}">Volver atrás</a></h3> 
+
+    </div> 
+
+<h3><a href="{{ URL::to('inicio') }}">Volver atrás</a></h3>
+
+ 
 
 @stop

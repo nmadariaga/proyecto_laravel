@@ -1,12 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('contenido')
-@if(Session::has('completo'))
-<div class="alert alert-success" role="alert">
-    <strong>{{Session::get('completo')}}</strong> 
 
-</div>
-@endif
 <div class="jumbotron">
     @foreach($perfil2 as $nombre)
     <h2>Bienvenido {{$nombre->nombres}}</h2>
@@ -14,15 +9,12 @@
      @endforeach
      {{HTML::link('test/datosadmin/'.$rut,'Mis Datos',array('class' =>'btn btn-success')) }}
 </div>
-<div class="row marketing"> 
-    
-    {{HTML::link('test/registro/','Crear Usuario',array('class' =>'btn btn-primary btn-lg')) }}
-    {{HTML::link('test/usuarios/','Ver Usuarios',array('class' =>'btn btn-primary btn-lg')) }}
+@if(Session::has('completo'))
+<div class="alert alert-success" role="alert">
+    <strong>{{Session::get('completo')}}</strong> 
 
-    {{Form::close()}}
 </div>
-
-<br></br>
+@endif
 
 @stop
 

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 @section('contenido')
 @if(Session::has('completo'))
 <div class="alert alert-success" role="alert">
@@ -44,7 +44,6 @@
 
 <h3><a href="{{ URL::to('inicio2') }}">Volver atrás</a></h3> 
 
-<br></br>
 {{Form::close()}}
 @stop
 

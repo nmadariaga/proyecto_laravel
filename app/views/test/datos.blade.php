@@ -7,7 +7,6 @@
 </div>
 @endif
 <div class="row marketing">
-  @foreach($perfil as $perfil)
      <div class="list-group">
         <a class="list-group-item active">
             <h4 class="list-group-item-heading">Mi Perfil</h4>
@@ -34,15 +33,10 @@
         </a>
     </div>
     
-   @endforeach  
-    {{HTML::link('test/editar/'.$perfil->id,'Editar mis Datos',array('class' =>'btn btn-primary btn-lg')) }}
-
-
-</div>
+{{HTML::link('test/editar/'.$perfil->id,'Editar mis Datos',array('class' =>'btn btn-primary btn-lg')) }}
 
 <h3><a href="{{ URL::to('inicio') }}">Volver atrás</a></h3> 
 
-<br></br>
 {{Form::close()}}
 @stop
 

@@ -22,7 +22,7 @@
 </div>
 
 <div class="form-group">
-    {{ Form::password('contrasena',array('class' =>'form-control', 'placeholder'=>'Password','required autofocus')) }}
+    {{ Form::password('contrasena',array('class' =>'form-control', 'placeholder'=>'Contraseña','required autofocus')) }}
 </div>
 
 @if(Session::has('mensaje'))
@@ -31,7 +31,7 @@
 </div>
 @endif
  @if(Session::has('reset'))
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-success" role="success">
     <strong>{{Session::get('reset')}}</strong> 
 </div>
 @endif   
@@ -39,13 +39,11 @@
         
 
 <div class="form-group">
-    <h4 class="form-signin-heading">Olvido su contraseña?  {{ HTML::link('password/remind','Recordar')}}</h4>
+    <h4 class="form-signin-heading">  {{ HTML::link('password/remind','Olvido su contraseña?')}}</h4>
     <h3><a href="{{ URL::to('/') }}">Volver atrás</a></h3> 
 </div> 
 {{ Form::close() }}
 
-
-<br></br>
 
 
 @stop

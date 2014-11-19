@@ -66,8 +66,7 @@
 
 </div>
 @endif
-<h3><a href="{{ URL::to('test/datos') }}">Volver atrás</a></h3> 
-<br></br>
+<h3><a href="{{ URL::to('test/datos/'.$datos->id) }}">Volver atrás</a></h3> 
 {{Form::close()}}
 
 @stop

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('contenido')
 {{ HTML::script('js/validarut.js') }}
@@ -118,7 +118,6 @@
 
 {{ Form::submit('Registrar',array('class' =>'btn btn-lg btn-primary btn-block','value'=>'Validar RUT')) }}
 <h3><a href="{{ URL::to('inicio2') }}">Volver atrás</a></h3> 
-<br></br>
 {{Form::close()}}
 
 @stop

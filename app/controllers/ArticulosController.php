@@ -9,13 +9,24 @@ class ArticulosController extends BaseController {
         return $this->layout->content = View::make('articulos.post', compact("registros"));
     }
 
-    public function get_add($rut = null) {
+    public function get_add() {
+        $rut = Auth::user()->rut;
         $perfil = Usuarios::where('rut', '=', $rut)->first(array("rut"));
         $autor = Funcionarios::where('rut', '=', $rut)->first(array('nombres'));
         return $this->layout->content = View::make('articulos.add', compact("perfil", "autor"));
     }
-
-    public function get_busqueda($buscar = null) {
+    public function get_registros() {
+        $rut = Auth::user()->rut;
+        $datos = Registros::where('rut','=',$rut)->orderBy('fecha','desc')->paginate(5);
+        return View::make('/articulos/registros', compact(array("datos", "rut")));
+    }
+    
+    public function get_busqueda() {
+        
+        return View::make('articulos.busqueda');
+    }
+    
+    public function post_resultados($buscar = null) {
 
         $datos = Registros::where(function ($query) {
                     $rut = Auth::user()->rut;
@@ -26,7 +37,7 @@ class ArticulosController extends BaseController {
                             ->orwhere('procedencia', 'LIKE', '%' . $p . '%')
                             ->orwhere('tipo_documento', 'LIKE', '%' . $p . '%');
                 })->paginate(8);
-        return View::make('articulos.busqueda', compact("datos"));
+        return View::make('articulos.resultados', compact("datos"));
     }
 
     public function post_add() {

@@ -27,7 +27,6 @@
     </div>
              <td>{{HTML::link("test/usuarios", 'Cancelar',array('class' =>'btn btn-primary btn-lg'))}}</td>
                 <td>{{HTML::link('test/inhabilitar/' . $registros->id,'Eliminar',array('class' =>'btn btn-danger btn-lg '))}}</td> 
-<br></br>
 
 @stop
 

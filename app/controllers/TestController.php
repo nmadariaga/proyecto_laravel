@@ -3,12 +3,12 @@
 class TestController extends BaseController {
 
     protected $layout = 'layouts.master';
-    public function get_datos() {
+
+    public function get_datos($id = null) {
         if (Auth::user()->rol_fk == 1) {
-            $rut = Auth::user()->rut;
-            $perfil = Funcionarios::where('rut', '=', $rut)->get();
-            //$dpto = (integer)$perfil;
-            $dpto = Departamentos::find(1);
+            $rut = Auth::user()->rut;           
+            $perfil = Funcionarios::find($id);          
+            $dpto = Departamentos::find($perfil->departamento_fk);
             return $this->layout->content = View::make('test/datos', compact('rut', 'perfil', 'dpto'));
         }
     }
@@ -24,7 +24,12 @@ class TestController extends BaseController {
     public function get_registro() {
         return $this->layout->content = View::make('test.registro');
     }
-
+    public function get_registros() {
+        $rut = Auth::user()->rut;
+        $datos = Registros::where('rut','=',$rut)->orderBy('fecha','desc')->paginate(5);
+        return View::make('/articulos/registros', compact(array("datos", "rut")));
+    }
+    
     public function post_registro() {
         $input = Input::all();
         $reglas = array
@@ -84,19 +89,22 @@ class TestController extends BaseController {
             }
         }
     }
+
     public function get_usuarios() {
         $datos = Funcionarios::all();
         $dpto = Departamentos::find(1);
-        return $this->layout->content = View::make('test/usuarios', compact("datos","dpto"));
+        return $this->layout->content = View::make('test/usuarios', compact("datos", "dpto"));
     }
+
     public function get_editar($id = null) {
         $datos = Funcionarios::find($id);
         return $this->layout->content = View::make('test/editarperfil', compact("datos"));
     }
+
     /* public function get_desactivar($rut = null) {
-        $registros = Usuarios::where('rut','=',$rut);
-        return view::make('test/desactivar',compact('registros'));
-    }*/
+      $registros = Usuarios::where('rut','=',$rut);
+      return view::make('test/desactivar',compact('registros'));
+      } */
 
     public function post_editar() {
         $inputs = Input::All();
@@ -135,14 +143,14 @@ class TestController extends BaseController {
             $data = Administradores::find($inputs['id']);
             $user = Auth::user()->id;
             $usuario = Usuarios::find($user);
-        $data->nombres = Input::get('nombres');
-        $data->apellidos = Input::get('apellidos');
-        $data->email = Input::get('email');
-        $data->save();
-        $usuario->email =Input::get('email');
-        $usuario->save();
-        Session::flash('completo', 'sus datos se actualizaron correctamente');
-        return Redirect::to('test/datosadmin');
+            $data->nombres = Input::get('nombres');
+            $data->apellidos = Input::get('apellidos');
+            $data->email = Input::get('email');
+            $data->save();
+            $usuario->email = Input::get('email');
+            $usuario->save();
+            Session::flash('completo', 'sus datos se actualizaron correctamente');
+            return Redirect::to('test/datosadmin');
     }
 
 }

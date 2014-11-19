@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin')
 
 @section('contenido')
 
@@ -65,7 +65,7 @@
 </div>
 @endif
 <h3><a href="{{ URL::to('test/datosadmin') }}">Volver atrás</a></h3> 
-<br></br>
+
 {{Form::close()}}
 
 @stop
