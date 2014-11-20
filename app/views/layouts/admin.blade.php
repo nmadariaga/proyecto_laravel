@@ -6,7 +6,6 @@
         {{ HTML::style('assets/css/bootstrap.min.css',array('rel' => 'stylesheet')) }}
         {{ HTML::style('assets/css/bootstrap-theme.min.css',array('rel' => 'stylesheet')) }}
         {{ HTML::style('css/jumbotron-narrow.css',array('rel' => 'stylesheet')) }}
-        {{ HTML::style('css/nav.css',array('rel' => 'stylesheet')) }}
         {{ HTML::script('assets/js/ie-emulation-modes-warning.js')}}
 
     </head>

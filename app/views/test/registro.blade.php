@@ -46,6 +46,24 @@
     </div>
 
 </div>
+<div class="form-group">
+    <label for="exampleInput" class="col-sm-2 control-label">Confirme su Contraseña</label>
+    <div class="col-sm-10">
+        {{ Form::password('contrasena_confirmation',array('class' =>'form-control', 'placeholder'=>'Contraseña','required autofocus')) }}
+    </div>
+    <div class="col-sm-10">
+        @if($errors->has('contrasena_confirmation'))
+        <div class="alert alert-danger" role="alert">
+            @foreach($errors->get('contrasena_confirmation') as $error )
+            <strong>{{ $error }}</strong> </br>
+            @endforeach
+        </div>
+        @endif
+
+
+    </div>
+
+</div>
 
 <div class="form-group">
     <label for="exampleInput" class="col-sm-2 control-label">Ingrese sus Nombres</label>

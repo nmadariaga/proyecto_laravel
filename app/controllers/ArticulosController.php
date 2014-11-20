@@ -3,6 +3,7 @@
 class ArticulosController extends BaseController {
 
     protected $layout = 'layouts.master';
+    
 
     public function getPublicacion($id = null) {
         $registros = Registros::find($id);
@@ -92,6 +93,8 @@ class ArticulosController extends BaseController {
             $n->procedencia = $inputs["procedencia"];
             $n->materia = $inputs["materia"];
             $n->observaciones = $inputs["observaciones"];
+            date_default_timezone_set('UTC');
+            $n->fecha = date('Y-m-d H:m:s',time());
             $n->save();
 
             Session::flash('mensaje', 'Su registro se actualizo correctamente');

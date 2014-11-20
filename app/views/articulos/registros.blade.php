@@ -14,6 +14,7 @@
             <tr>
 
                 <th>Tipo de Documento</th>
+                <th>Fecha Registro</th>
                 <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
@@ -22,6 +23,7 @@
         <tbody>
             <tr>
                 <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
+                <td>{{$dato->fecha}}</td>
                 <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
                 <td>{{HTML::link('articulos/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary '))}}</td>
             </tr>

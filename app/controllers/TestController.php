@@ -37,6 +37,7 @@ class TestController extends BaseController {
             'rut' => 'unique:usuarios',
             'contrasena' => 'min:6',
             'email' => 'email',
+            'contrasena_confirmation'=> 'same:contrasena'
         );
 
         $validar = Validator::make($input, $reglas);
@@ -59,6 +60,7 @@ class TestController extends BaseController {
                 $usuario->rut = Input::get('rut');
                 $contrasena = Hash::make($input['contrasena']);
                 $usuario->contrasena = $contrasena;
+                $usuario->contrasena_confirmation = $contrasena;
                 $usuario->remember_token = $contrasena;
                 $usuario->rol_fk = Input::get('rol');
                 $usuario->email = Input::get('email');
@@ -80,6 +82,7 @@ class TestController extends BaseController {
                 $usuario->rut = Input::get('rut');
                 $contrasena = Hash::make($input['contrasena']);
                 $usuario->contrasena = $contrasena;
+                $usuario->contrasena_confirmation = $contrasena;
                 $usuario->remember_token = $contrasena;
                 $usuario->rol_fk = Input::get('rol');
                 $usuario->email = Input::get('email');

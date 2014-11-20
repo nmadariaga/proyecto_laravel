@@ -17,6 +17,14 @@ Route::group(array('before' => 'auth'), function() {
 
 Route::get('password/remind', 'ReminderController@remind');
 
+Route::get('password/contrasena', 'AuthController@get_reset');
+
+Route::post('password/contrasena/', 'AuthController@post_reset');
+
+Route::get('password/contrasenadmin', 'AuthController@get_resetadmin');
+
+Route::post('password/contrasenadmin/', 'AuthController@post_resetadmin');
+
 Route::post('password/remind', 'ReminderController@request');
 
 Route::post('password/reset/{token}','ReminderController@update');

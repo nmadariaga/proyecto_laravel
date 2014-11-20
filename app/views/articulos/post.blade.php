@@ -23,5 +23,5 @@
             <p class="list-group-item-text">{{$registros->fecha}}</p>
         </a>
     </div>
-<h3><a href="{{ URL::to('') }}">Volver atrás</a></h3>
+<h3><a href="{{ URL::to('articulos/registros') }}">Volver atrás</a></h3>
 @stop

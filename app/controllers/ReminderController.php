@@ -28,6 +28,9 @@ class ReminderController extends BaseController {
     public function reset($token) {
         return View::make('password/reset')->with('token', $token);
     }
+    public function contrasena($email) {
+        return View::make('password/contrasena')->with('email', $email);
+    }
 
     public function update() {
         $credentials = array(
