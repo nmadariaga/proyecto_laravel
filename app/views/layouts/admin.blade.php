@@ -23,16 +23,18 @@
                     <li>{{HTML::link('/test/registro','Crear Usuario')}}</li>
                     <li>{{HTML::link('/test/usuarios','Ver Usuarios')}}</li>
                 </ul>
-                    <ul class="nav navbar-nav navbar-right">
-      <li>{{HTML::link('logout','Cerrar Sesión')}}</li>
-    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>{{HTML::link('logout','Cerrar Sesión')}}</li>
+                </ul>
             </div>
-        
+
+        </div>
+
+        <div class="col-md-12">
+            @yield('contenido')
         </div>
 
 
-
-        @yield('contenido')
 
 
 

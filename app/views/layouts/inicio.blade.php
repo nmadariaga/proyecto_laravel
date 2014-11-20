@@ -25,10 +25,11 @@
                 </ul>
             </div>
         </div>
+        <div class="col-md-12">
+            @yield('contenido')
+        </div>
 
 
-
-        @yield('contenido')
 
 
 

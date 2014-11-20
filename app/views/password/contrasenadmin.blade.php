@@ -15,7 +15,7 @@
 
 {{ Form::submit('Enviar',array('class' =>'btn btn-lg btn-primary btn-block')) }}
 @if (Session::has('reset'))
-</div>
+
 <div class="alert alert-success" role="success">
     <strong>{{ (Session::get('reset')) }}</strong>
 </div>
@@ -27,14 +27,16 @@
 </div>
 @endif
 @if($errors->has('confirmar_contraseña'))
-<p class="alert alert-danger" role="alert">
+<div class="alert alert-danger" role="alert">
     @foreach($errors->get('confirmar_contraseña') as $error )
     <strong>{{ $error }}</strong> </br>
     @endforeach
 
-</p>
+</div>>
 @endif
-<h3><a href="{{ URL::to('/') }}">Volver atrás</a></h3>
+<h3><a href="{{ URL::to('/test/datosadmin/'.Auth::user()->id) }}">Volver atrás</a></h3>
+</div>
+
 {{ Form::close() }}
 
 
