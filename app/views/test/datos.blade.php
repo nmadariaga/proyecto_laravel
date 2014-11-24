@@ -34,7 +34,6 @@
     </div>
     {{HTML::link('test/editar/'.$perfil->id,'Editar mis Datos',array('class' =>'btn btn-primary btn-lg')) }}
 
-{{HTML::link('password/contrasena/','Cambiar Contraseña',array('class' =>'btn btn-primary btn-lg')) }}
 </div>
     
 

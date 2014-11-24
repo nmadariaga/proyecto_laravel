@@ -18,14 +18,16 @@
                 <ul class="nav navbar-nav">
                     <li>{{ HTML::link('/','Inicio')}}</li>
                     <li>{{HTML::link('articulos/busqueda','Buscar')}}</li>
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registros <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>{{HTML::link('articulos/registros/','Ver Registros')}}</li>
                             <li>{{HTML::link('articulos/add/','Ingresar Registro')}}</li>
+                            
+                            
                         </ul>
                     </li>
+                    <li>{{HTML::link('password/contrasena/','Cambiar Contraseña')}}</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>{{HTML::link('logout','Cerrar Sesión')}}</li>

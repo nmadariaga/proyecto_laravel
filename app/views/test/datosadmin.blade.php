@@ -39,7 +39,6 @@
      
     {{HTML::link('test/editaradmin/'.$perfil->id,'Editar mis Datos',array('class' =>'btn btn-primary btn-lg')) }}
 
-    {{HTML::link('password/contrasenadmin/','Cambiar Contraseña',array('class' =>'btn btn-primary btn-lg')) }}
 </div>
 
 <h3><a href="{{ URL::to('inicio2') }}">Volver atrás</a></h3> 

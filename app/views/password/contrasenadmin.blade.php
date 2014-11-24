@@ -34,7 +34,7 @@
 
 </div>>
 @endif
-<h3><a href="{{ URL::to('/test/datosadmin/'.Auth::user()->id) }}">Volver atrás</a></h3>
+<h3><a href="{{ URL::to('/') }}">Volver atrás</a></h3>
 </div>
 
 {{ Form::close() }}

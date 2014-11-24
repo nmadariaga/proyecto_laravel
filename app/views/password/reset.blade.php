@@ -4,9 +4,9 @@
 {{ HTML::style('css/signin.css') }}
 
 {{ Form::open(array('url' => array('password/reset', $token),'class'=>'form-signin')) }}
-<h2 class="form-signin-heading">Reestablecer Contraseña</h2>
-<div class="form-group">
 
+<div class="form-group">
+<h2 class="form-signin-heading">Reestablecer Contraseña</h2>
     <label class="control-label">Ingrese su E-Mail</label>
     {{ Form::text('email',Input::old('tipo_documento'),array('class' =>'form-control','placeholder'=>'E-Mail','required autofocus')) }}</p>
 @if($errors->has('email'))
@@ -24,12 +24,13 @@
 {{ Form::hidden('token', $token) }}
 {{ Form::submit('Enviar',array('class' =>'btn btn-lg btn-primary btn-block')) }}
 @if (Session::has('error'))
-</div>
 <div class="alert alert-success" role="success">
     <strong>{{ (Session::get('error')) }}</strong>
 </div>
 @endif
 <h3><a href="{{ URL::to('/home/ingreso') }}">Volver atrás</a></h3>
+</div>
+
 {{ Form::close() }}
 
 

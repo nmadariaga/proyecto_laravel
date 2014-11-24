@@ -5,7 +5,7 @@
 <div class="jumbotron">
     
 
-    <h2>Administración de Correspondencia UTEM</h2>
+    <h2>Administración de Correspondencia</h2>
     <p class="lead"></p>
     {{HTML::link('home/ingreso/','Ingrese a su Cuenta',array('class' =>'btn btn-success')) }}
 </div>

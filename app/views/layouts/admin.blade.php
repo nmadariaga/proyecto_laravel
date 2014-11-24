@@ -22,6 +22,7 @@
                     <li>{{ HTML::link('/','Inicio')}}</li>
                     <li>{{HTML::link('/test/registro','Crear Usuario')}}</li>
                     <li>{{HTML::link('/test/usuarios','Ver Usuarios')}}</li>
+                    <li>{{HTML::link('password/contrasenadmin/','Cambiar Contraseña')}}</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>{{HTML::link('logout','Cerrar Sesión')}}</li>
