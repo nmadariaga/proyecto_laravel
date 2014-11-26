@@ -2,7 +2,9 @@
 
 @section('contenido')
 
-
+{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',array('type'=>"text/javascript"))}}
+{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js',array('type'=>"text/javascript"))}}
+{{ HTML::script('js/calendario.js')}}
 {{Form::open(array('method'=>'post','url'=>'articulos/add',"name"=>"form", 'files' => true))}}
 
 <h2>Ingreso de Registros</h2>
@@ -55,7 +57,22 @@
     @endforeach
 
 </p>
+
 @endif
+
+<div class="form-group">
+  <label class="control-label">Fecha de Recepción</label>
+  {{Form::text("fecha",Input::old('fecha'),array('name'=>"datepicker",'id'=>"datepicker", 'readonly'=>'readonly', 'size'=>"15"))}}
+</div>
+@if($errors->has('observaciones'))
+<p class="alert alert-danger" role="alert">
+    @foreach($errors->get('observaciones') as $error )
+    <strong>{{ $error }}</strong> </br>
+    @endforeach
+
+</p>
+@endif
+
 
 
 

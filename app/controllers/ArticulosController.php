@@ -11,10 +11,14 @@ class ArticulosController extends BaseController {
     }
 
     public function get_add() {
+        if (Auth::user()->rol_fk == 1){
         $rut = Auth::user()->rut;
         $perfil = Usuarios::where('rut', '=', $rut)->first(array("rut"));
         $autor = Funcionarios::where('rut', '=', $rut)->first(array('nombres'));
         return $this->layout->content = View::make('articulos.add', compact("perfil", "autor"));
+        }
+        else
+            return Redirec::to('/');
     }
     public function get_registros() {
         $rut = Auth::user()->rut;
@@ -110,7 +114,7 @@ class ArticulosController extends BaseController {
 
     public function get_confirmar($id = null) {
         $registros = Registros::find($id);
-        return view::make('test/confirmar', compact('registros'));
+        return view::make('articulos/confirmar', compact('registros'));
     }
 
 }

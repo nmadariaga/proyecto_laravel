@@ -41,8 +41,15 @@ Route::get('/hello', function() {
 Route::controller("/home", "HomeController");
 
 Route::group(array('before' => 'auth'), function() {
-    Route::controller("/test", "TestController");
-    Route::controller("/articulos", "ArticulosController");
+    Route::group(array('before' => 'admin'), function() {
+
+        Route::controller("/admin", "AdminController");
+    });
+    Route::group(array('before' => 'usuario'), function() {
+        Route::controller("/usuario", "UsuarioController");
+        Route::controller("/articulos","ArticulosController");
+        
+    });
 });
 
 

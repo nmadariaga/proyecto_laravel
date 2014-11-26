@@ -20,8 +20,8 @@
             <div class="navbar-collapse collapse navbar-inverse-collapse">
                 <ul class="nav navbar-nav">
                     <li>{{ HTML::link('/','Inicio')}}</li>
-                    <li>{{HTML::link('/test/registro','Crear Usuario')}}</li>
-                    <li>{{HTML::link('/test/usuarios','Ver Usuarios')}}</li>
+                    <li>{{HTML::link('/admin/registro','Crear Usuario')}}</li>
+                    <li>{{HTML::link('/admin/usuarios','Ver Usuarios')}}</li>
                     <li>{{HTML::link('password/contrasenadmin/','Cambiar Contraseña')}}</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

@@ -82,3 +82,17 @@ Route::filter('inicio', array('before' => 'auth', function()
 {
     "Only authenticated users may enter...";
 }));
+Route::filter('usuario', function()
+{
+  
+    if(Auth::user()->rol_fk!=1)
+        return Redirect::to('/');
+        
+});
+Route::filter('admin', function()
+{
+  
+    if(Auth::user()->rol_fk!=2)
+        return Redirect::to('/');
+        
+});

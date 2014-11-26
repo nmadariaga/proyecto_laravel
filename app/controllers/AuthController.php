@@ -90,14 +90,14 @@ class AuthController extends BaseController {
         $rut = Auth::user()->rut;
         $perfil = Funcionarios::where('rut', '=', $rut)->get();
         $datos = Registros::where('rut', '=', $rut)->orderBy('fecha', 'desc')->paginate(5);
-        return View::make('/test/perfil', compact(array("datos", "perfil", "rut")));
+        return View::make('/usuario/perfil', compact(array("datos", "perfil", "rut")));
     }
 
     public function getAdmin() {
 
         $rut = Auth::user()->rut;
         $perfil2 = Administradores::where('rut', '=', $rut)->get();
-        return View::make('/test/admin', compact(array("perfil2", "rut")));
+        return View::make('/admin/admin', compact(array("perfil2", "rut")));
     }
 
     public function getLogout() {

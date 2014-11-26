@@ -1,33 +1,19 @@
 <?php
 
-class TestController extends BaseController {
+class AdminController extends BaseController {
 
     protected $layout = 'layouts.master';
 
-    public function get_datos($id = null) {
-        if (Auth::user()->rol_fk == 1) {
-            $rut = Auth::user()->rut;           
-            $perfil = Funcionarios::find($id);          
-            $dpto = Departamentos::find($perfil->departamento_fk);
-            return $this->layout->content = View::make('test/datos', compact('rut', 'perfil', 'dpto'));
-        }
-    }
-
     public function get_datosadmin() {
-        if (Auth::user()->rol_fk == 2) {
             $rut = Auth::user()->rut;
             $perfil2 = Administradores::where('rut', '=', $rut)->get();
-            return $this->layout->content = View::make('test/datosadmin', compact('rut', 'perfil2'));
-        }
+            return $this->layout->content = View::make('admin/datosadmin', compact('rut', 'perfil2'));
     }
 
     public function get_registro() {
-        return $this->layout->content = View::make('test.registro');
-    }
-    public function get_registros() {
-        $rut = Auth::user()->rut;
-        $datos = Registros::where('rut','=',$rut)->orderBy('fecha','desc')->paginate(5);
-        return View::make('/articulos/registros', compact(array("datos", "rut")));
+         
+        return $this->layout->content = View::make('admin.registro');
+        
     }
     
     public function post_registro() {
@@ -96,41 +82,12 @@ class TestController extends BaseController {
     public function get_usuarios() {
         $datos = Funcionarios::all();
         $dpto = Departamentos::find(1);
-        return $this->layout->content = View::make('test/usuarios', compact("datos", "dpto"));
-    }
-
-    public function get_editar($id = null) {
-        $datos = Funcionarios::find($id);
-        return $this->layout->content = View::make('test/editarperfil', compact("datos"));
-    }
-
-    /* public function get_desactivar($rut = null) {
-      $registros = Usuarios::where('rut','=',$rut);
-      return view::make('test/desactivar',compact('registros'));
-      } */
-
-    public function post_editar() {
-        $inputs = Input::All();
-        $reglas = array
-            (
-            'email' => 'email',
-        );
-        $validar = Validator::make($inputs, $reglas);
-        if ($validar->fails()) {
-            return Redirect::back()->withErrors($validar)->withInput();
-        } else
-            $data = Funcionarios::find($inputs['id']);
-        $data->nombres = Input::get('nombres');
-        $data->apellidos = Input::get('apellidos');
-        $data->email = Input::get('email');
-        $data->save();
-        Session::flash('mensaje', 'sus datos se actualizaron correctamente');
-        return Redirect::to('test/datos');
+        return $this->layout->content = View::make('admin/usuarios', compact("datos", "dpto"));
     }
 
     public function get_editaradmin($id = null) {
         $datos = Administradores::find($id);
-        return $this->layout->content = View::make('test/editaradmin', compact("datos"));
+        return $this->layout->content = View::make('admin/editaradmin', compact("datos"));
     }
 
     public function post_editaradmin() {
@@ -153,7 +110,7 @@ class TestController extends BaseController {
             $usuario->email = Input::get('email');
             $usuario->save();
             Session::flash('completo', 'sus datos se actualizaron correctamente');
-            return Redirect::to('test/datosadmin');
+            return Redirect::to('admin/datosadmin');
     }
 
 }
