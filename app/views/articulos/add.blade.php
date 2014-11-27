@@ -1,10 +1,7 @@
 @extends('layouts.master')
 
 @section('contenido')
-
-{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js',array('type'=>"text/javascript"))}}
-{{ HTML::script('http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js',array('type'=>"text/javascript"))}}
-{{ HTML::script('js/calendario.js')}}
+        
 {{Form::open(array('method'=>'post','url'=>'articulos/add',"name"=>"form", 'files' => true))}}
 
 <h2>Ingreso de Registros</h2>
@@ -18,7 +15,6 @@
     @foreach($errors->get('tipo_documento') as $error )
     <strong>{{ $error }}</strong> </br>
     @endforeach
-
 
 </p>
 @endif
@@ -61,9 +57,11 @@
 @endif
 
 <div class="form-group">
-  <label class="control-label">Fecha de Recepción</label>
-  {{Form::text("fecha",Input::old('fecha'),array('name'=>"datepicker",'id'=>"datepicker", 'readonly'=>'readonly', 'size'=>"15"))}}
+  <label class="control-label">Fecha Recepción de Documento (Opcional)</label>
+  <input type="text" name="fecha" id="datepicker"  size="15" class ="form-control autofocus" />
 </div>
+
+
 @if($errors->has('observaciones'))
 <p class="alert alert-danger" role="alert">
     @foreach($errors->get('observaciones') as $error )
@@ -72,11 +70,6 @@
 
 </p>
 @endif
-
-
-
-
-
 
 {{Form::hidden('autor',$autor['nombres'])}}
 {{Form::hidden('rut',$perfil['rut'])}}

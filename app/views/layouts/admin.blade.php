@@ -6,7 +6,11 @@
         {{ HTML::style('assets/css/bootstrap.min.css',array('rel' => 'stylesheet')) }}
         {{ HTML::style('assets/css/bootstrap-theme.min.css',array('rel' => 'stylesheet')) }}
         {{ HTML::style('css/jumbotron-narrow.css',array('rel' => 'stylesheet')) }}
-        {{ HTML::script('assets/js/ie-emulation-modes-warning.js')}}
+        {{ HTML::script('js/jquery-2.1.1.min.js')}}
+          {{ HTML::script('assets/js/bootstrap.min.js') }}
+          {{ HTML::script('js/jquery-2.1.1.min.js')}}
+
+{{ HTML::script('assets/js/bootstrap.min.js') }}
 
     </head>
 
@@ -47,10 +51,7 @@
 
 
 
-    {{ HTML::script('js/jquery-1.11.1.min.js')}}
-    {{ HTML::script('js/jquery-2.1.1.min.js')}}
-    {{ HTML::script('assets/js/bootstrap.min.js') }}
-    {{ HTML::script('assets/js/ie10-viewport-bug-workaround.js')}}
+   
 
 
 
