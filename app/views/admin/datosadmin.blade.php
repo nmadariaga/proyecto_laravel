@@ -29,7 +29,7 @@
             <p class="list-group-item-text">{{$perfil->email}}</p>
         </a>
         <a  class="list-group-item">
-            <h4 class="list-group-item-heading">Departamento</h4>
+            <h4 class="list-group-item-heading">Lugar de Trabajo</h4>
             <p class="list-group-item-text">{{$perfil->departamento}}</p>
         </a>
     </div>

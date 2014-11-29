@@ -47,7 +47,7 @@ Route::group(array('before' => 'auth'), function() {
     });
     Route::group(array('before' => 'usuario'), function() {
         Route::controller("/usuario", "UsuarioController");
-        Route::controller("/articulos","ArticulosController");
+        Route::controller("/registros","RegistrosController");
         
     });
 });

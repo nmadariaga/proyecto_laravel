@@ -37,7 +37,7 @@ return array(
 	"exists"               => "El :attribute seleccionado no se encuentra en la base de datos.",
 	"image"                => "The :attribute must be an image.",
 	"in"                   => "The selected :attribute is invalid.",
-	"integer"              => "El campo :attribute debe ser un entero.",
+	"integer"              => "El campo debe contener solo numeros.",
 	"ip"                   => "The :attribute must be a valid IP address.",
 	"max"                  => array(
 		"numeric" => "The :attribute may not be greater than :max.",

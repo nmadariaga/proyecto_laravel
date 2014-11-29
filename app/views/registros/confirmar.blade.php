@@ -26,7 +26,7 @@
         </a>
     </div>
              <td>{{HTML::link("inicio", 'Cancelar',array('class' =>'btn btn-primary btn-lg'))}}</td>
-                <td>{{HTML::link('articulos/delete/' . $registros->id,'Eliminar',array('class' =>'btn btn-danger btn-lg '))}}</td> 
+                <td>{{HTML::link('registros/delete/' . $registros->id,'Eliminar',array('class' =>'btn btn-danger btn-lg '))}}</td> 
 <br></br>
 
 @stop

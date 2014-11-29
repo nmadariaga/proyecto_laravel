@@ -2,17 +2,25 @@
 
 @section('contenido')
         
-{{Form::open(array('method'=>'post','url'=>'articulos/add',"name"=>"form", 'files' => true))}}
+{{Form::open(array('method'=>'post','url'=>'registros/add',"name"=>"form", 'files' => true))}}
 
 <h2>Ingreso de Registros</h2>
 
 <div class="form-group">
   <label class="control-label">Tipo de Documento</label>
-  {{Form::text("tipo_documento",Input::old('tipo_documento'),array('class' =>'form-control','required autofocus'))}} 
+  {{Form::select("nombre",TipoDoc::lists('nombre', 'id'),Input::old('nombre'),array('class' =>'form-control','required autofocus'))}} 
 </div>
-@if($errors->has('tipo_documento'))
+<div class="form-group">
+    <button type="button" class="btn btn-sm btn-primary">Agregar Nuevo Tipo</button>
+</div>
+
+<div class="form-group">
+  <label class="control-label">N° Documento</label>
+  {{Form::text("numero",Input::old('numero'),array('class' =>'form-control','required autofocus'))}}
+</div>
+@if($errors->has('numero'))
 <p class="alert alert-danger" role="alert">
-    @foreach($errors->get('tipo_documento') as $error )
+    @foreach($errors->get('numero') as $error )
     <strong>{{ $error }}</strong> </br>
     @endforeach
 
@@ -20,16 +28,11 @@
 @endif
 <div class="form-group">
   <label class="control-label">Procedencia</label>
-  {{Form::text("procedencia",Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
+  {{Form::select("procedencia",Procedencia::lists('nombre', 'id'),Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
 </div>
-@if($errors->has('procedencia'))
-<p class="alert alert-danger" role="alert">
-    @foreach($errors->get('procedencia') as $error )
-    <strong>{{ $error }}</strong> </br>
-    @endforeach
-
-</p>
-@endif
+<div class="form-group">
+    <button type="button" class="btn btn-sm btn-primary">Agregar Nueva Procedencia</button>
+</div>
 <div class="form-group">
   <label class="control-label">Materia</label>
   {{Form::text("materia",Input::old('materia'),array('class' =>'form-control','required autofocus'))}}

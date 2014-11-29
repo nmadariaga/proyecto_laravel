@@ -32,7 +32,15 @@
     <strong>{{ $error }}</strong> </br>
     @endforeach
 
-</div>>
+</div>
+@endif
+@if($errors->has('contraseña'))
+<div class="alert alert-danger" role="alert">
+    @foreach($errors->get('contraseña') as $error )
+    <strong>{{ $error }}</strong> </br>
+    @endforeach
+
+</div>
 @endif
 <h3><a href="{{ URL::to('/') }}">Volver atrás</a></h3>
 </div>

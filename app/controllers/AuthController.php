@@ -72,7 +72,7 @@ class AuthController extends BaseController {
         );
         $validation = Validator::make(Input::all(), $rules);
         if ($validation->fails()) {
-            return Redirect::to('password/contrasena')->withErrors($validation)->withInput();
+            return Redirect::to('password/contrasenadmin')->withErrors($validation)->withInput();
         } else {
             if (Hash::check(Input::get('password_old'), Auth::user()->contrasena)) {
 

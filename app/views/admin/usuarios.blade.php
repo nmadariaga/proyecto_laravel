@@ -27,9 +27,10 @@
         </tbody>
         @endforeach
    
-    </table>
-                                   
-    </br>
+ </table>
+    {{$datos->links()}} 
+    
+    
 </div>
 
 <h3><a href="{{ URL::to('inicio2') }}">Volver atrás</a></h3> 

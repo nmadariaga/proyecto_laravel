@@ -2,13 +2,13 @@
 
 @section('contenido')
 
-{{Form::open(array('method'=>'post_editar','url'=>'/articulos/editar/',"name"=>"form", 'files' => true))}}
+{{Form::open(array('method'=>'post_editar','url'=>'/registros/editar/',"name"=>"form", 'files' => true))}}
 
 <h2>Actualizar Registros</h2>
 
 <div class="form-group">
   <label class="control-label">Tipo de Documento</label>
-  {{Form::text("tipo_documento",$datos['tipo_documento'],array('class' =>'form-control','required autofocus'))}} 
+  {{Form::select("tipo_documento",TipoDoc::lists('nombre','id'),Input::old('tipo_documento'),array('class' =>'form-control','required autofocus'))}} 
 </div>
 @if($errors->has('tipo_documento'))
 <p class="alert alert-danger" role="alert">
@@ -21,7 +21,7 @@
 @endif
 <div class="form-group">
   <label class="control-label">Procedencia</label>
-  {{Form::text("procedencia",$datos['procedencia'],array('class' =>'form-control','required autofocus'))}}
+  {{Form::select("procedencia",Procedencia::lists('nombre','id'),Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
 </div>
 @if($errors->has('procedencia'))
 <p class="alert alert-danger" role="alert">

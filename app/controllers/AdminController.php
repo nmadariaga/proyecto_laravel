@@ -20,9 +20,9 @@ class AdminController extends BaseController {
         $input = Input::all();
         $reglas = array
             (
-            'rut' => 'unique:usuarios',
+            'rut' => 'unique:usuarios|unique:funcionarios|unique:administradores',
             'contrasena' => 'min:6',
-            'email' => 'email',
+            'email' => 'email|unique:usuarios',
             'contrasena_confirmation'=> 'same:contrasena'
         );
 
@@ -34,6 +34,16 @@ class AdminController extends BaseController {
 
             if ($rol == 1) {
 
+                
+                $usuario = new Usuarios;
+                $usuario->rut = Input::get('rut');
+                $contrasena = Hash::make($input['contrasena']);
+                $usuario->contrasena = $contrasena;
+                $usuario->contrasena_confirmation = $contrasena;
+                $usuario->remember_token = $contrasena;
+                $usuario->rol_fk = Input::get('rol');
+                $usuario->email = Input::get('email');
+                $usuario->save();
                 $data = new Funcionarios;
                 $data->rut = Input::get('rut');
                 $data->nombres = Input::get('nombres');
@@ -42,6 +52,12 @@ class AdminController extends BaseController {
                 $data->email = Input::get('email');
                 $data->genero = Input::get('genero');
                 $data->save();
+                Session::flash('completo', 'Usuario Registrado Satisfactoriamente.');
+                return Redirect::to('inicio2');
+            }
+            if ($rol == 2) {
+
+                
                 $usuario = new Usuarios;
                 $usuario->rut = Input::get('rut');
                 $contrasena = Hash::make($input['contrasena']);
@@ -51,11 +67,6 @@ class AdminController extends BaseController {
                 $usuario->rol_fk = Input::get('rol');
                 $usuario->email = Input::get('email');
                 $usuario->save();
-                Session::flash('completo', 'Usuario Registrado Satisfactoriamente.');
-                return Redirect::to('inicio2');
-            }
-            if ($rol == 2) {
-
                 $data = new Administradores;
                 $data->rut = Input::get('rut');
                 $data->nombres = Input::get('nombres');
@@ -64,15 +75,6 @@ class AdminController extends BaseController {
                 $data->email = Input::get('email');
                 $data->genero = Input::get('genero');
                 $data->save();
-                $usuario = new Usuarios;
-                $usuario->rut = Input::get('rut');
-                $contrasena = Hash::make($input['contrasena']);
-                $usuario->contrasena = $contrasena;
-                $usuario->contrasena_confirmation = $contrasena;
-                $usuario->remember_token = $contrasena;
-                $usuario->rol_fk = Input::get('rol');
-                $usuario->email = Input::get('email');
-                $usuario->save();
                 Session::flash('completo', 'Usuario Registrado Satisfactoriamente.');
                 return Redirect::to('inicio2');
             }
@@ -80,7 +82,7 @@ class AdminController extends BaseController {
     }
 
     public function get_usuarios() {
-        $datos = Funcionarios::all();
+        $datos = Funcionarios::paginate(6);
         $dpto = Departamentos::find(1);
         return $this->layout->content = View::make('admin/usuarios', compact("datos", "dpto"));
     }

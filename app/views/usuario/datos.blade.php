@@ -6,10 +6,11 @@
 
 </div>
 @endif
-<div class="row marketing">
+
+<h2>Mis Datos</h2>
      <div class="list-group">
         <a class="list-group-item active">
-            <h4 class="list-group-item-heading">Mi Perfil</h4>
+            <h4 class="list-group-item-heading">Datos</h4>
         </a>
         <a  class="list-group-item">
             <h4 class="list-group-item-heading">Nombres</h4>
@@ -28,13 +29,11 @@
             <p class="list-group-item-text">{{$perfil->email}}</p>
         </a>
         <a  class="list-group-item">
-            <h4 class="list-group-item-heading">Departamento</h4>
+            <h4 class="list-group-item-heading">Lugar de Trabajo</h4>
             <p class="list-group-item-text">{{$dpto->nombre}}</p>
         </a>
     </div>
     {{HTML::link('usuario/editar/'.$perfil->id,'Editar mis Datos',array('class' =>'btn btn-primary btn-lg')) }}
-
-</div>
     
 
 

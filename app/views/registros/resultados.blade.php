@@ -19,22 +19,24 @@
                 <th>Eliminar</th>
             </tr>
         </thead>
+        @foreach($tipos as $tipo)
         @foreach($datos as $dato)
+         @if($tipo->id ==$dato->tipo_documento_fk)
         <tbody>
             <tr>
-                <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
-                <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
-                <td>{{HTML::link('articulos/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary'))}}</td>
+                <td>{{HTML::link("registros/publicacion/".$dato->id,$tipo->nombre)}}</td>
+                <td>{{HTML::link("registros/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
+                <td>{{HTML::link('registros/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary'))}}</td>
             </tr>
         </tbody>
+        @endif
         @endforeach
-   
+    @endforeach
     </table>
     <ul class="pagination">
        {{$datos->links()}} 
     </ul>
                                    
-    </br>
 </div>
 @else
 <p class="alert alert-danger" role="alert">
@@ -43,7 +45,7 @@
 </p>
 @endif
 
-<h3><a href="{{ URL::to('articulos/busqueda') }}">Volver atrás</a></h3>
+<h3><a href="{{ URL::to('registros/busqueda') }}">Volver atrás</a></h3>
 @stop
 
 

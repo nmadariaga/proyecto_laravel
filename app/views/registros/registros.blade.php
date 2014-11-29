@@ -14,22 +14,25 @@
             <tr>
 
                 <th>Tipo de Documento</th>
-                <th>Fecha Registro</th>
+                <th>Fecha Recepción</th>
                 <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
+        @foreach($tipo as $tipo)
         @foreach($datos as $dato)
+         @if($tipo->id ==$dato->tipo_documento_fk)
         <tbody>
             <tr>
-                <td>{{HTML::link("articulos/publicacion/".$dato->id,$dato->tipo_documento)}}</td>
-                <td>{{$dato->fecha}}</td>
-                <td>{{HTML::link("articulos/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
-                <td>{{HTML::link('articulos/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary '))}}</td>
+                <td>{{HTML::link("registros/publicacion/".$dato->id,$tipo->nombre)}}</td>
+                <td>{{$dato->fecha_recep}}</td>
+                <td>{{HTML::link("registros/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
+                <td>{{HTML::link('registros/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary '))}}</td>
             </tr>
         </tbody>
+        @endif
         @endforeach
-
+        @endforeach
     </table>
     {{$datos->links()}}                           
     </br>
