@@ -14,8 +14,9 @@
             <tr>
 
                 <th>Tipo de Documento</th>
+                <th>N° de Documento</th>
                 <th>Fecha Recepción</th>
-                <th>Actualizar</th>
+                <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -25,8 +26,9 @@
         <tbody>
             <tr>
                 <td>{{HTML::link("registros/publicacion/".$dato->id,$tipo->nombre)}}</td>
+                <td>{{$dato->numero_registro}}</td>
                 <td>{{$dato->fecha_recep}}</td>
-                <td>{{HTML::link("registros/editar/" . $dato->id, 'Actualizar',array('class' =>'btn btn-primary'))}}</td>
+                <td>{{HTML::link("registros/editar/" . $dato->id, 'Editar',array('class' =>'btn btn-primary'))}}</td>
                 <td>{{HTML::link('registros/confirmar/' . $dato->id,'Eliminar',array('class' =>'btn btn-primary '))}}</td>
             </tr>
         </tbody>

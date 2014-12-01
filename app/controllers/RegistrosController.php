@@ -29,6 +29,14 @@ class RegistrosController extends BaseController {
         
         return View::make('registros.busqueda');
     }
+    public function get_procedencia() {
+        
+        return View::make('registros.procedencia');
+    }
+     public function get_documento() {
+        
+        return View::make('registros.documento');
+    }
     public function get_resultados() {
         $tipos = TipoDoc::all();
         $datos = Registros::where(function ($query) {
@@ -117,6 +125,48 @@ class RegistrosController extends BaseController {
             return Redirect::to('inicio');
         }
     }
+     public function post_procedencia() {
+        $inputs = Input::All();
+        $reglas = array
+            (
+            'nombre' => 'min:3|unique:procedencia'
+        );
+        $validar = Validator::make($inputs, $reglas);
+        if ($validar->fails()) {
+            return Redirect::back()->withErrors($validar)->withInput();
+        } else {
+
+
+            $inputs = Input::All();
+            $n = new Procedencia();
+            $n->nombre = $inputs["nombre"];
+            $n->descripcion = $inputs["descripcion"];
+            $n->save();
+            Session::flash('nuevo', 'Su registro se ingresó correctamente');
+            return Redirect::to('registros/add');
+        }
+    }
+        public function post_documento() {
+        $inputs = Input::All();
+        $reglas = array
+            (
+            'nombre' => 'min:3|unique:tipo_doc'
+        );
+        $validar = Validator::make($inputs, $reglas);
+        if ($validar->fails()) {
+            return Redirect::back()->withErrors($validar)->withInput();
+        } else {
+
+
+            $inputs = Input::All();
+            $n = new TipoDoc();
+            $n->nombre = $inputs["nombre"];
+            $n->descripcion = $inputs["descripcion"];
+            $n->save();
+            Session::flash('nuevo', 'Su registro se ingresó correctamente');
+            return Redirect::to('registros/add');
+        }
+    }
 
     public function get_editar($id = null) {
         $datos = Registros::find($id);
@@ -138,6 +188,7 @@ class RegistrosController extends BaseController {
         } else {
             $n = Registros::find($inputs['id']);
             $n->tipo_documento_fk = $inputs["tipo_documento"];
+            $n->numero_registro = $inputs["numero_registro"];
             $n->procedencia_fk = $inputs["procedencia"];
             $n->materia = $inputs["materia"];
             $n->observaciones = $inputs["observaciones"];

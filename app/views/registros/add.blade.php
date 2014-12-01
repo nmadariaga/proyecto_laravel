@@ -3,7 +3,13 @@
 @section('contenido')
         
 {{Form::open(array('method'=>'post','url'=>'registros/add',"name"=>"form", 'files' => true))}}
+@if(Session::has('nuevo'))
+<div class="alert alert-success" role="alert">
+    <strong>{{Session::get('nuevo')}}</strong> 
+    
 
+</div>
+@endif
 <h2>Ingreso de Registros</h2>
 
 <div class="form-group">
@@ -11,9 +17,8 @@
   {{Form::select("nombre",TipoDoc::lists('nombre', 'id'),Input::old('nombre'),array('class' =>'form-control','required autofocus'))}} 
 </div>
 <div class="form-group">
-    <button type="button" class="btn btn-sm btn-primary">Agregar Nuevo Tipo</button>
+    <td>{{HTML::link("registros/documento/", 'Agregar Nuevo',array('class' =>'btn btn-sm btn-primary'))}}</td>
 </div>
-
 <div class="form-group">
   <label class="control-label">N° Documento</label>
   {{Form::text("numero",Input::old('numero'),array('class' =>'form-control','required autofocus'))}}
@@ -31,7 +36,7 @@
   {{Form::select("procedencia",Procedencia::lists('nombre', 'id'),Input::old('procedencia'),array('class' =>'form-control','required autofocus'))}}
 </div>
 <div class="form-group">
-    <button type="button" class="btn btn-sm btn-primary">Agregar Nueva Procedencia</button>
+    <td>{{HTML::link("registros/procedencia/", 'Agregar Nuevo',array('class' =>'btn btn-sm btn-primary'))}}</td>
 </div>
 <div class="form-group">
   <label class="control-label">Materia</label>
@@ -81,9 +86,10 @@
 @if(Session::has('mensaje'))
 <div class="alert alert-success" role="alert">
     <strong>{{Session::get('mensaje')}}</strong> 
-    @endif
+    
 
 </div>
+@endif
 
 
 {{Form::close()}}

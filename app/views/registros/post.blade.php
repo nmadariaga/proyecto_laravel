@@ -20,6 +20,10 @@
             <h4 class="list-group-item-heading">Materia</h4>
             <p class="list-group-item-text">{{$registros->materia}}</p>
         </a>
+         <a  class="list-group-item">
+            <h4 class="list-group-item-heading">Observaciones</h4>
+            <p class="list-group-item-text">{{$registros->observaciones}}</p>
+        </a>
         <a  class="list-group-item">
             <h4 class="list-group-item-heading">Fecha de Ingreso</h4>
             <p class="list-group-item-text">{{$registros->fecha}}</p>

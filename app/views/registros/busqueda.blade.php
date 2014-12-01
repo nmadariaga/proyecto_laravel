@@ -40,7 +40,7 @@
     <div class="form-group">
         <h2>Buscar por Fecha</h2>
   <label class="control-label">Fecha</label>
-  <input type="text" name="fecha" id="datepicker"  size="15" class ="form-control autofocus" placeholder="Fecha"/>
+  <input type="text" name="fecha" id="datepicker"  size="15" class ="form-control autofocus" placeholder="Fecha" required/>
   
 </div>
 {{ Form::submit("Buscar",array('class'=>'btn btn-primary')) }}
