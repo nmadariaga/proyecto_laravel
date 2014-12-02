@@ -117,7 +117,6 @@ class RegistrosController extends BaseController {
             $n->materia = $inputs["materia"];
             $n->observaciones = $inputs["observaciones"];
             $n->rut = $inputs["rut"];
-            $n->autor = $inputs["autor"];
             $n->fecha_recep = $inputs["fecha"];
             $n->usuario_fk = Auth::user()->id;
             $n->save();
